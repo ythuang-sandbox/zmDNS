@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import zmq
 import msgpack
 import netutils
