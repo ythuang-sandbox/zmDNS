@@ -29,6 +29,7 @@ def query_host(ifname, timeout=10):
 
     query_msg = {"ip": "%s" % ip, "message": "query"}
     query_socket.send(msgpack.packb(query_msg))
+    print "sending message ", query_msg
 
     poller = zmq.Poller()
     poller.register(reply_socket, zmq.POLLIN)
