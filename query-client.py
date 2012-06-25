@@ -43,6 +43,7 @@ def query_host(ifname, timeout=10):
             reply_socket.send(msgpack.packb(ack_msg))
             reply_msg = msgpack.unpackb(msg)
             hosts.append(reply_msg['ip'])
+            print "got ip:", reply_msg['ip']
         print "waiting ", c
         time.sleep(1)
 
