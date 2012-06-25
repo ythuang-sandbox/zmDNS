@@ -50,4 +50,5 @@ def query_host(ifname, timeout=10):
     return hosts
 
 if __name__ == '__main__':
-    query_host("eth0")
+    h = query_host("eth0")
+    print "got list of host: ", h
