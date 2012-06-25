@@ -5,7 +5,7 @@ import msgpack
 import netutils
 
 ip = netutils.get_ip("eth0")
-
+print "ip is ",ip
 def wait_query():
     context = zmq.Context()
     query_socket = context.socket(zmq.SUB)
@@ -17,6 +17,7 @@ def wait_query():
 
         if 'query' == query_msg['message']:
             reply_socket = context.socket(zmq.REQ)
+            reply_socket.connect("tcp://%s:5556" % ip)
             reply_msg = {"ip": "%s" % ip, "message": "reply"}
             reply_socket.send(msgpack.packb(reply_msg))
             msg = reply_socket.recv()
