@@ -23,7 +23,7 @@ def query_host(ifname, timeout=10):
     context = zmq.Context()
     query_socket = context.socket(zmq.PUB)
     reply_socket = context.socket(zmq.REP)
-    query_socket.bind("pgm://%s;224.0.0.2:5555" % ip)
+    query_socket.connect("pgm://224.0.0.2:5555")
 
     reply_socket.bind("tcp://%s:5556" % ip)
 
